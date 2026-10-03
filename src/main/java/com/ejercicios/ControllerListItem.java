@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import java.util.Objects;
 
 public class ControllerListItem {
@@ -50,16 +51,36 @@ public class ControllerListItem {
     }
 
     public void setImage(String imagePath) {
+        if (imagePath == null || imagePath.isEmpty()) {
+            itemImage.setImage(null);
+            itemImage.setVisible(false);
+            return;
+        }
         try {
             Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(imagePath)));
             this.itemImage.setImage(image);
+            itemImage.setVisible(true);
         } catch (NullPointerException e) {
             System.err.println("Error loading image asset: " + imagePath);
-            e.printStackTrace();
+            itemImage.setVisible(false);
+        }
+    }
+
+    @FXML
+    private StackPane imageContainer;
+
+    public void hideImageContainer() {
+        if (imageContainer != null) {
+            imageContainer.setVisible(false);
+            imageContainer.setManaged(false);
         }
     }
 
     public void setName(String name) {
         this.itemNameLabel.setText(name);
+    }
+
+    public String getName() {
+        return itemNameLabel != null ? itemNameLabel.getText() : "";
     }
 }

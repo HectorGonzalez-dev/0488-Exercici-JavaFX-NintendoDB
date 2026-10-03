@@ -1,0 +1,83 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="com.ejercicios.Controller">
+    <top>
+        <BorderPane fx:id="topBar" style="-fx-background-color: #0066CC; -fx-padding: 15px;" prefHeight="60">
+            <left>
+                <StackPane fx:id="backButtonContainer" visible="false" managed="false" alignment="CENTER_LEFT">
+                    <Button fx:id="backButton" style="-fx-background-color: transparent; -fx-padding: 5; -fx-cursor: hand;" onAction="#onBackPressed">
+                        <graphic>
+                            <ImageView fx:id="backArrow" fitWidth="24" fitHeight="24" preserveRatio="true">
+                                <image>
+                                    <Image url="@/data/images/arrow-back.png"/>
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </StackPane>
+            </left>
+            <center>
+                <Label fx:id="titleLabel" text="Nintendo DB" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+            </center>
+        </BorderPane>
+    </top>
+    <center>
+        <StackPane fx:id="mainContentArea">
+            <!-- Vista Escritorio (por defecto) -->
+            <BorderPane fx:id="desktopView" visible="true" managed="true">
+                <left>
+                    <VBox spacing="10" style="-fx-padding: 15 15 15 15; -fx-background-color: #F8F8F8;" minWidth="250" prefWidth="250" maxWidth="250">
+                        <HBox alignment="CENTER_LEFT">
+                            <ComboBox fx:id="categoryComboBox" prefWidth="200"/>
+                        </HBox>
+                        <ScrollPane fx:id="contentScrollPane" fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background: transparent; -fx-background-color: transparent;">
+                            <VBox fx:id="scrollContent" spacing="10" style="-fx-background-color: transparent;"/>
+                        </ScrollPane>
+                    </VBox>
+                </left>
+                <center>
+                    <BorderPane fx:id="detailArea" style="-fx-padding: 15 15 15 15; -fx-background-color: #FAFAFA;">
+                        <center>
+                            <VBox fx:id="detailContent" spacing="15" style="-fx-background-color: transparent;" alignment="TOP_CENTER" VBox.vgrow="ALWAYS"/>
+                        </center>
+                    </BorderPane>
+                </center>
+            </BorderPane>
+
+            <!-- Vista Móvil (apilada) -->
+            <VBox fx:id="mobileView" visible="false" managed="false" style="-fx-background-color: white;">
+                <!-- Pantalla 1: Selección de Categoría -->
+                <VBox fx:id="mobileCategoryScreen" visible="true" managed="true" style="-fx-padding: 20;" spacing="15" alignment="TOP_CENTER">
+                    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background: transparent; -fx-background-color: transparent;">
+                        <VBox fx:id="mobileCategoryList" spacing="10" alignment="TOP_CENTER"/>
+                    </ScrollPane>
+                </VBox>
+
+                <!-- Pantalla 2: Lista de Items -->
+                <VBox fx:id="mobileItemScreen" visible="false" managed="false" style="-fx-padding: 15;" spacing="10" VBox.vgrow="ALWAYS" alignment="TOP_CENTER">
+                    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background: transparent; -fx-background-color: transparent;">
+                        <VBox fx:id="mobileItemList" spacing="10" style="-fx-background-color: transparent;" alignment="TOP_CENTER"/>
+                    </ScrollPane>
+                </VBox>
+
+                <!-- Pantalla 3: Detalle -->
+                <VBox fx:id="mobileDetailScreen" visible="false" managed="false" style="-fx-padding: 15;" spacing="15" VBox.vgrow="ALWAYS" alignment="TOP_CENTER">
+                    <ScrollPane fx:id="mobileDetailScrollPane" fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background: transparent; -fx-background-color: transparent;">
+                        <VBox fx:id="mobileDetailContent" spacing="15" style="-fx-background-color: transparent;" alignment="TOP_CENTER"/>
+                    </ScrollPane>
+                </VBox>
+            </VBox>
+        </StackPane>
+    </center>
+</BorderPane>

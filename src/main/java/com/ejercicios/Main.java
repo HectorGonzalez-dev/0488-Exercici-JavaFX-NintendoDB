@@ -18,14 +18,14 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
 
         UtilsViews.parentContainer.setStyle("-fx-font: 14 arial;");
-        UtilsViews.addView(getClass(), "layout_desktop", "/assets/layout_desktop.fxml");
+        UtilsViews.addView(getClass(), "layout_responsive", "/assets/layout_responsive.fxml");
 
         Scene scene = new Scene(UtilsViews.parentContainer);
 
         stage.setScene(scene);
         stage.setTitle("NintendoDB");
-        stage.setMinWidth(WINDOW_WIDTH);
-        stage.setMinHeight(WINDOW_HEIGHT);
+        stage.setMinWidth(400);
+        stage.setMinHeight(500);
         stage.setMaxHeight(MAX_WINDOW_HEIGHT);
         stage.show();
 
