@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Pos?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+
+<VBox fx:id="gameDetailRoot" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" spacing="15" alignment="TOP_CENTER" style="-fx-padding: 20;" fx:controller="com.ejercicios.ControllerGameDetail">
+    <!-- Imagen -->
+    <StackPane fx:id="imageContainer" prefWidth="180" maxWidth="180" minWidth="180" prefHeight="120" maxHeight="120" minHeight="120" style="-fx-background-color: #F5F5F5; -fx-border-radius: 8; -fx-background-radius: 8;" alignment="CENTER">
+        <ImageView fx:id="gameImage" fitWidth="160" fitHeight="100" preserveRatio="true" smooth="true"/>
+    </StackPane>
+    
+    <!-- Nombre -->
+    <Label fx:id="gameNameLabel" text="Game Name" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1A1A2E;"/>
+    
+    <!-- Año y tipo -->
+    <HBox alignment="CENTER" spacing="15">
+        <Label fx:id="gameYearLabel" text="Year" style="-fx-font-size: 14px; -fx-text-fill: #666;"/>
+        <Label fx:id="gameTypeLabel" text="Type" style="-fx-font-size: 13px; -fx-text-fill: #1A1A2E; -fx-background-color: #E8E8E8; -fx-padding: 4 12; -fx-background-radius: 12;"/>
+    </HBox>
+    
+    <!-- Descripcion -->
+    <Label fx:id="gamePlotLabel" text="Plot description..." style="-fx-font-size: 13px; -fx-text-fill: #1A1A2E; -fx-wrap-text: true; -fx-max-width: 400;"/>
+</VBox>

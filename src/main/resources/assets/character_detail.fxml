@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Pos?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+
+<VBox fx:id="characterDetailRoot" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" spacing="15" alignment="TOP_CENTER" style="-fx-padding: 20;" fx:controller="com.ejercicios.ControllerCharacterDetail">
+    <!-- Imagen -->
+    <StackPane fx:id="imageContainer" prefWidth="140" maxWidth="140" minWidth="140" prefHeight="140" maxHeight="140" minHeight="140" style="-fx-background-color: #F5F5F5; -fx-border-radius: 8; -fx-background-radius: 8;" alignment="CENTER">
+        <ImageView fx:id="characterImage" fitWidth="120" fitHeight="120" preserveRatio="true" smooth="true"/>
+    </StackPane>
+    
+    <!-- Nombre -->
+    <Label fx:id="characterNameLabel" text="Character Name" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1A1A2E;"/>
+    
+    <!-- Juego -->
+    <Label fx:id="characterGameLabel" text="Game" style="-fx-font-size: 14px; -fx-text-fill: #666;"/>
+    
+    <!-- Color -->
+    <HBox alignment="CENTER" spacing="10">
+        <Label text="Color:" style="-fx-font-size: 13px; -fx-font-weight: 500; -fx-text-fill: #333;"/>
+        <Region fx:id="colorBadge" prefWidth="20" prefHeight="20" maxWidth="20" maxHeight="20" minWidth="20" minHeight="20" style="-fx-border-color: #DDD; -fx-border-width: 1;"/>
+    </HBox>
+</VBox>

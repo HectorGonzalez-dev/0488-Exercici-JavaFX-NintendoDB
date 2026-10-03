@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 
-<HBox fx:id="itemRoot" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" prefHeight="60" style="-fx-padding: 5 10; -fx-border-color: transparent transparent #E0E0E0 transparent; -fx-border-width: 0 0 1 0;" fx:controller="com.ejercicios.ControllerListItem" alignment="CENTER_LEFT">
+<HBox fx:id="itemRoot" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" prefHeight="60" style="-fx-padding: 5 10; -fx-border-color: transparent transparent #E0E0E0 transparent; -fx-border-width: 0 0 1 0; -fx-cursor: hand;" fx:controller="com.ejercicios.ControllerListItem" alignment="CENTER_LEFT" onMouseClicked="#onItemClicked">
     <!-- Fixed-size image area on the left - centered X and Y -->
     <StackPane fx:id="imageContainer" prefWidth="60" maxWidth="60" minWidth="60" style="-fx-background-color: #F5F5F5;" alignment="CENTER">
         <ImageView fx:id="itemImage" fitWidth="40" fitHeight="40" preserveRatio="true" smooth="true"/>
@@ -17,5 +17,5 @@
     <Region prefWidth="10" maxWidth="10" minWidth="10"/>
 
     <!-- Flexible name area on the right, fills remaining width - centered Y, truncate with ellipsis -->
-    <Label fx:id="itemNameLabel" text="Item Name" style="-fx-font-size: 14px; -fx-font-weight: 500;" maxWidth="Infinity" HBox.hgrow="ALWAYS" alignment="CENTER_LEFT" textOverrun="ELLIPSIS" wrapText="false"/>
+    <Label fx:id="itemNameLabel" text="Item Name" style="-fx-font-size: 14px; -fx-font-weight: 500; -fx-text-fill: #1A1A2E;" maxWidth="Infinity" HBox.hgrow="ALWAYS" alignment="CENTER_LEFT" textOverrun="ELLIPSIS" wrapText="false"/>
 </HBox>

@@ -24,9 +24,15 @@ public class Controller implements Initializable {
     @FXML
     private VBox scrollContent;
 
+    @FXML
+    private VBox detailContent;
+
     private JSONArray charactersData;
     private JSONArray consolesData;
     private JSONArray gamesData;
+
+    private ControllerListItem currentlySelectedItem = null;
+    private String currentCategory = "Personajes";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -80,6 +86,11 @@ public class Controller implements Initializable {
     private void loadCategory(String category) {
         if (scrollContent == null) return;
 
+        currentCategory = category;
+
+        // Borra la seleccion anterior
+        currentlySelectedItem = null;
+
         scrollContent.getChildren().clear();
 
         JSONArray data;
@@ -110,10 +121,75 @@ public class Controller implements Initializable {
                 itemController.setName(name);
                 itemController.setImage(imageUrl);
 
+                final ControllerListItem currentItemController = itemController;
+                final JSONObject itemData = item;
+                itemController.setOnSelectCallback(() -> {
+                    handleItemSelection(currentItemController, itemData);
+                });
+
+                // Selecciona el primero por defecto
+                if (i == 0) {
+                    currentlySelectedItem = itemController;
+                    itemController.setSelected(true);
+                    loadDetailView(itemData);
+                }
+
                 scrollContent.getChildren().add(itemTemplate);
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private void handleItemSelection(ControllerListItem selectedItem, JSONObject itemData) {
+        // Deselecciona el item anterior
+        if (currentlySelectedItem != null && currentlySelectedItem != selectedItem) {
+            currentlySelectedItem.setSelected(false);
+        }
+
+        // Selecciona el nuevo
+        selectedItem.setSelected(true);
+        currentlySelectedItem = selectedItem;
+
+        // Cargar vista de detalle
+        loadDetailView(itemData);
+    }
+
+    private void loadDetailView(JSONObject itemData) {
+        if (detailContent == null) return;
+
+        try {
+            String fxmlPath;
+            Object detailController;
+
+            switch (currentCategory) {
+                case "Personajes":
+                    fxmlPath = "/assets/character_detail.fxml";
+                    FXMLLoader charLoader = new FXMLLoader(getClass().getResource(fxmlPath));
+                    Parent charView = charLoader.load();
+                    detailController = charLoader.getController();
+                    ((ControllerCharacterDetail) detailController).setData(itemData);
+                    detailContent.getChildren().setAll(charView);
+                    break;
+                case "Consolas":
+                    fxmlPath = "/assets/console_detail.fxml";
+                    FXMLLoader consoleLoader = new FXMLLoader(getClass().getResource(fxmlPath));
+                    Parent consoleView = consoleLoader.load();
+                    detailController = consoleLoader.getController();
+                    ((ControllerConsoleDetail) detailController).setData(itemData);
+                    detailContent.getChildren().setAll(consoleView);
+                    break;
+                case "Juegos":
+                    fxmlPath = "/assets/game_detail.fxml";
+                    FXMLLoader gameLoader = new FXMLLoader(getClass().getResource(fxmlPath));
+                    Parent gameView = gameLoader.load();
+                    detailController = gameLoader.getController();
+                    ((ControllerGameDetail) detailController).setData(itemData);
+                    detailContent.getChildren().setAll(gameView);
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

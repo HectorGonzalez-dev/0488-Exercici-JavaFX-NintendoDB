@@ -16,15 +16,26 @@
     </top>
     <center>
         <BorderPane fx:id="contentArea">
-            <center>
-                <VBox spacing="10" style="-fx-padding: 15 15 15 15;">
+            <left>
+                <!-- Left side: Category list - fixed width -->
+                <VBox spacing="10" style="-fx-padding: 15 15 15 15; -fx-background-color: #F8F8F8;" minWidth="250" prefWidth="250" maxWidth="250">
                     <HBox alignment="CENTER_LEFT">
                         <ComboBox fx:id="categoryComboBox" prefWidth="200"/>
                     </HBox>
-                    <ScrollPane fx:id="contentScrollPane" fitToWidth="true" VBox.vgrow="ALWAYS" prefWidth="200" maxWidth="200">
-                        <VBox fx:id="scrollContent" spacing="10"/>
+                    <ScrollPane fx:id="contentScrollPane" fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background: transparent; -fx-background-color: transparent;">
+                        <VBox fx:id="scrollContent" spacing="10" style="-fx-background-color: transparent;"/>
                     </ScrollPane>
                 </VBox>
+            </left>
+            <center>
+                <!-- Right side: Detail view -->
+                <BorderPane fx:id="detailArea" style="-fx-padding: 15 15 15 15; -fx-background-color: #FAFAFA;">
+                    <center>
+                        <ScrollPane fx:id="detailScrollPane" fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;">
+                            <VBox fx:id="detailContent" spacing="15" style="-fx-background-color: transparent;"/>
+                        </ScrollPane>
+                    </center>
+                </BorderPane>
             </center>
         </BorderPane>
     </center>
