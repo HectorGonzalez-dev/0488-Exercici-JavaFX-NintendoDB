@@ -7,8 +7,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    final int WINDOW_WIDTH = 400;
+    final int WINDOW_WIDTH = 800;
     final int WINDOW_HEIGHT = 400;
+    final int MAX_WINDOW_HEIGHT = 700;
 
     static String age;
     static String name;
@@ -17,7 +18,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
 
         UtilsViews.parentContainer.setStyle("-fx-font: 14 arial;");
-        UtilsViews.addView(getClass(), "layout", "/assets/layout.fxml");
+        UtilsViews.addView(getClass(), "layout_desktop", "/assets/layout_desktop.fxml");
 
         Scene scene = new Scene(UtilsViews.parentContainer);
 
@@ -25,6 +26,7 @@ public class Main extends Application {
         stage.setTitle("NintendoDB");
         stage.setMinWidth(WINDOW_WIDTH);
         stage.setMinHeight(WINDOW_HEIGHT);
+        stage.setMaxHeight(MAX_WINDOW_HEIGHT);
         stage.show();
 
         // Afegeix una icona només si no és un Mac
