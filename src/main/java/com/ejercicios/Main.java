@@ -11,9 +11,6 @@ public class Main extends Application {
     final int WINDOW_HEIGHT = 400;
     final int MAX_WINDOW_HEIGHT = 700;
 
-    static String age;
-    static String name;
-
     @Override
     public void start(Stage stage) throws Exception {
 

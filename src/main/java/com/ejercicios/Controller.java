@@ -196,11 +196,6 @@ public class Controller implements Initializable {
         }
     }
 
-    @FXML
-    private void loadPersonajes() { loadCategory("Personajes"); }
-    @FXML private void loadConsolas() { loadCategory("Consolas"); }
-    @FXML private void loadJuegos() { loadCategory("Juegos"); }
-
     private void loadCategory(String category) {
         currentCategory = category;
         
